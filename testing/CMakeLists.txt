@@ -2,6 +2,8 @@ set( CMAKE_CXX_STANDARD 17 )
 set( CMAKE_CXX_STANDARD_REQUIRED ON )
 set( CMAKE_CXX_EXTENSIONS OFF )
 
+link_libraries( son8::c_header )
+
 # Add tests ⮟ HERE ⮟ that should NOT use extra warning flags
 
 if ( MSVC )
@@ -11,3 +13,5 @@ else( )
 endif( )
 
 # Add tests ⮟ HERE ⮟ that SHOULD use extra warning flags
+add_executable( test-c test.cxx )
+add_test( NAME test-c COMMAND test-c password )
