@@ -1,0 +1,29 @@
+name: linOS 2404 g++ Max Debug
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [test, test-linos, test-max, test-debug, test-linos-max, test-linos-debug, test-max-debug, test-linos-max-debug]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: g++ Alter
+        uses: ./.github/actions/gxx-alter
+        with:
+          alter_version: 14
+
+      - name: Configs
+        uses: ./.github/actions/configs
+        with:
+          build_type: Debug
+
+      - name: Builder
+        uses: ./.github/actions/builder
+
+      - name: Testing
+        uses: ./.github/actions/testing

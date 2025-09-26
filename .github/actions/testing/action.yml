@@ -1,0 +1,8 @@
+name: Testing
+description: 'Test CMake project using CTest'
+runs:
+  using: "composite"
+  steps:
+    - name: Run ctest (bash)
+      run: ctest --test-dir build --output-on-failure
+      shell: bash

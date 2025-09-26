@@ -1,0 +1,12 @@
+name: Configs
+description: 'Alter g++ version'
+inputs:
+  alter_version:
+    description: 'alternative g++ version'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Run update alternative g++ version (bash)
+      run: sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-${{ inputs.alter_version }} 192
+      shell: bash

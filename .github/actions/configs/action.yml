@@ -1,0 +1,13 @@
+name: Configs
+description: 'Configure CMake project'
+inputs:
+  build_type:
+    description: 'CMake Build type, default is Release'
+    default: 'Release'
+    required: false
+runs:
+  using: "composite"
+  steps:
+    - name: Run cmake (bash)
+      run: cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ inputs.build_type }}
+      shell: bash

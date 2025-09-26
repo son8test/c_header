@@ -1,0 +1,27 @@
+name: linOS 2204 g++ Min Flash
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [test, test-linos, test-min, test-flash, test-linos-min, test-linos-flash, test-min-flash, test-linos-min-flash]
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: g++ Alter
+        uses: ./.github/actions/gxx-alter
+        with:
+          alter_version: 11
+
+      - name: Configs
+        uses: ./.github/actions/configs
+
+      - name: Builder
+        uses: ./.github/actions/builder
+
+      - name: Testing
+        uses: ./.github/actions/testing

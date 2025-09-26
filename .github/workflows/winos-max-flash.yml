@@ -1,0 +1,25 @@
+name: winOS 2025 msvc Max Flash
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [test, test-winos, test-max, test-flash, test-winos-max, test-winos-flash, test-max-flash, test-winos-max-flash]
+
+jobs:
+  build:
+    runs-on: windows-2025
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Configs
+        uses: ./.github/actions/configs
+
+      - name: Builder
+        uses: ./.github/actions/builder
+
+      - name: Testing
+        uses: ./.github/actions/testing

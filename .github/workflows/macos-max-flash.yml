@@ -1,0 +1,22 @@
+name: macOS 1500 clang Max Flash
+
+on:
+    workflow_dispatch:
+    push:
+      branches: [test, test-macos, test-max, test-flash, test-macos-max, test-macos-flash, test-max-flash, test-macos-max-flash]
+
+jobs:
+  build:
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Configs
+        uses: ./.github/actions/configs
+
+      - name: Builder
+        uses: ./.github/actions/builder
+
+      - name: Testing
+        uses: ./.github/actions/testing

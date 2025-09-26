@@ -1,0 +1,8 @@
+name: Builder
+description: 'Build CMake project'
+runs:
+  using: "composite"
+  steps:
+    - name: Run cmake build (bash)
+      run: cmake --build build
+      shell: bash

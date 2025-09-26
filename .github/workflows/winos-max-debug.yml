@@ -1,0 +1,27 @@
+name: winOS 2025 msvc Max Debug
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [test, test-winos, test-max, test-debug, test-winos-max, test-winos-debug, test-max-debug, test-winos-max-debug]
+
+jobs:
+  build:
+    runs-on: windows-2025
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup MSVC environment
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Configs
+        uses: ./.github/actions/configs
+        with:
+          build_type: Debug
+
+      - name: Builder
+        uses: ./.github/actions/builder
+
+      - name: Testing
+        uses: ./.github/actions/testing

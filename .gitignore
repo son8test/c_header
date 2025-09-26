@@ -1,0 +1,6 @@
+# ignore folders that start with a dot
+.*/
+!.github/
+# ignore temporary folders and files
+temp/
+temp.*
